@@ -1,0 +1,29 @@
+{
+  "name": "emilia",
+  "version": "0.1.0",
+  "description": "A multi-porpose discord bot ",
+  "main": "./build/bot.js",
+  "scripts": {
+    "start": "yarn build && node .",
+    "build": "tsc -b",
+    "lint": "eslint ./src --ext .ts --fix"
+  },
+  "author": "NajeebFarhan",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "glob": "^7.1.6"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/node": "^14.14.27",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.20.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.7",
+    "pm2": "^4.5.4",
+    "typescript": "^4.1.5"
+  }
+}
