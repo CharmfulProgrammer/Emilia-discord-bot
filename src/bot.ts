@@ -1,5 +1,6 @@
 import * as Discord from "discord.js";
 import privateConfig from "./privateConfig";
+//import privateConfig from "./_privateConfig";
 const {TOKEN} = privateConfig;
 import commands from "./selfUtils/commandHandler";
 import {Message} from "./selfUtils/discordMessageType";
