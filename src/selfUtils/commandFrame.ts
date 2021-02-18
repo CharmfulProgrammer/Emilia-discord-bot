@@ -5,5 +5,5 @@ export default interface Command{
     description: string,
     public: boolean,
     nsfw?: boolean,
-    execute: (message:Message, args: string[]) => any
+    execute(message: Message, args?: string[]): any
 }

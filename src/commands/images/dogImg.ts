@@ -6,7 +6,7 @@ export const command: Command = {
     names: ["dog"],
     description: "Shows a random dog image",
     public: true,
-    async execute(message, args): Promise<void>{
+    async execute(message): Promise<void>{
         const response = await fetch("https://some-random-api.ml/img/dog");
         const data = await response.json();
         const embed: Partial<Embed> = {
@@ -15,7 +15,7 @@ export const command: Command = {
             image: {
                 url: data.link
             }
-        }
+        };
         message.channel.send({embed});
     }
-}
+};
