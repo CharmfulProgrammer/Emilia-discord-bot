@@ -1,4 +1,4 @@
-export type Embed = {
+export default interface Embed{
     color: number|string,
     title: string,
     url: string,

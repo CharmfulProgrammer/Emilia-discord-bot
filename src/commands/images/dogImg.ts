@@ -1,11 +1,10 @@
 import Command from "../../selfUtils/commandFrame";
-import {Embed} from "../../selfUtils/discordEmbedType";
+import Embed from "../../selfUtils/discordEmbedType";
 import fetch from "node-fetch";
 
 export const command: Command = {
-    names: ["dog"],
+    name: "dog",
     description: "Shows a random dog image",
-    public: true,
     async execute(message): Promise<void>{
         const response = await fetch("https://some-random-api.ml/img/dog");
         const data = await response.json();

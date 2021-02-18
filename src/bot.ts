@@ -5,7 +5,7 @@ const {TOKEN} = privateConfig;
 import commands from "./selfUtils/commandHandler";
 import {Message} from "./selfUtils/discordMessageType";
 import messageManipulator from "./selfUtils/messageManipulator";
-import {Client} from "./selfUtils/discordClientType";
+import Client from "./selfUtils/discordClientType";
 
 const client: Client = new Discord.Client();
 
