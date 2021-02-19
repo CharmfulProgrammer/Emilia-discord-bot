@@ -1,0 +1,53 @@
+{
+	"import command object": {
+		"scope": "typescript",
+		"prefix": "impcmd",
+		"body": "import Command from \"../../selfUtils/commandFrame\";"
+	},
+	"import MessageEmbed": {
+		"scope": "typescript",
+		"prefix": "impemb",
+		"body": "import {MessageEmbed} from \"discord.js\";"
+	},
+	"import node-fetch": {
+		"scope": "typescript",
+		"prefix": "impftch",
+		"body": "import fetch from \"node-fetch\";"
+	},
+	"import nekos.life": {
+		"scope": "typescript",
+		"prefix": "impnk",
+		"body": [
+			"import Neko from \"nekos.life\";",
+			"const {${1:sfw}} = new Neko();"
+		]
+	},
+	"bot command snippet": {
+		"scope": "typescript",
+        "prefix": "cmd",
+        "body": [
+        	"export const command = new Command(", 
+        	"\t\"${1:name}\",",
+        	"\t\"${2:description}\",",
+        	"\t\"${3:usage}\",",
+        	"\t(message) => {", 
+        	"\t\t${4:\/\/code...}",
+        	"\t}",
+        	");"
+        ]
+    },
+	"async bot command snippet": {
+		"scope": "typescript",
+        "prefix": "asyncmd",
+        "body": [
+        	"export const command = new Command(", 
+        	"\t\"${1:name}\",",
+        	"\t\"${2:description}\",",
+        	"\t\"${3:usage}\",",
+        	"\tasync(message) => {", 
+        	"\t\t${4:\/\/code...}",
+        	"\t}",
+        	");"
+        ]
+    }
+}
