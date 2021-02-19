@@ -1,13 +1,11 @@
-import * as Discord from "discord.js";
+import {Client, Message} from "discord.js";
 import privateConfig from "./privateConfig";
 //import privateConfig from "./_privateConfig";
 const {TOKEN} = privateConfig;
 import commands from "./selfUtils/commandHandler";
-import {Message} from "./selfUtils/discordMessageType";
 import messageManipulator from "./selfUtils/messageManipulator";
-import Client from "./selfUtils/discordClientType";
 
-const client: Client = new Discord.Client();
+const client = new Client();
 
 client.once("ready", () => {
     console.log("Running...");
@@ -18,7 +16,7 @@ client.on("message", (message: Message) => {
 
     if(!startsWithPrefix || message.author.bot) return;
 
-    commands.has(commandName) && commands.get(commandName)?.execute(message, args);
+    commands.has(commandName) && commands.get(commandName).execute(message, args);
 
 });
 

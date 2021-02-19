@@ -1,20 +1,20 @@
 import Command from "../../selfUtils/commandFrame";
-import Embed from "../../selfUtils/discordEmbedType";
+import {MessageEmbed} from "discord.js";
 import Neko from "nekos.life";
 const {sfw} = new Neko();
 
-export const command: Command = {
-    name: "neko",
-    description: "Shows a random neko girl picture",
-    async execute(message, args){
+export const command = new Command(
+    "neko",
+    "Shows random neko girl",
+    "neko",
+    async(message) => {
         const data = await sfw.neko();
-        const embed: Partial<Embed> = {
+        const embed: Partial<MessageEmbed> = {
             title: "Nya~~~",
-            color: "#41d18b",
+            color: 0x41d18b,
             image: {
                 url: data.url
             }
         } 
-        message.reply({embed});
-    }
-}
+        message.channel.send({embed});
+    });

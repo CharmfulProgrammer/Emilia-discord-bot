@@ -1,15 +1,16 @@
 import Command from "../../selfUtils/commandFrame";
-import Embed from "../../selfUtils/discordEmbedType";
+import {MessageEmbed} from "discord.js";
 import fetch from "node-fetch";
 
-export const command: Command = {
-    name: "cat",
-    description: "Shows a random cat image",
-    async execute(message): Promise<void>{
+export const command = new Command(
+    "cat",
+    "Shows a random cat picture",
+    "cat",
+    async(message) => {
         const response = await fetch("https://some-random-api.ml/img/cat");
         const data = await response.json();
-        const embed: Partial<Embed> = {
-            color: "#0f0",
+        const embed: Partial<MessageEmbed> = {
+            color: 0x00ff00,
             title: "Here's a cute cat",
             image: {
                 url: data.link
@@ -17,4 +18,4 @@ export const command: Command = {
         };
         message.channel.send({embed});
     }
-};
+);

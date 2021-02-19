@@ -1,8 +1,13 @@
-import {Message} from "./discordMessageType";
+import {Message} from "discord.js";
 
-export default interface Command{
-    name: string,
-    description: string,
-    nsfw?: boolean,
-    execute(message: Message, args?: string[]): any
+class Command{
+    constructor(
+        public name: string,
+        public description: string,
+        public usage: string,
+        public execute: (message: Message, args?: string[]) => Promise<void>|void|undefined,
+        public alias?: string[]
+    ){}
 }
+
+export default Command;

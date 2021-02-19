@@ -1,4 +1,4 @@
-import {Message} from "./discordMessageType";
+import {Message} from "discord.js";
 import config from "../config";
 const {prefixes} = config;
 
