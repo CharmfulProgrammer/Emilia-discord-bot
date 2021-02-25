@@ -1,10 +1,12 @@
 import Command from "../../selfUtils/commandFrame";
+import user from "../../selfUtils/fetchUser";
 
 export const command = new Command(
-    "ping",
+    "test",
     "To test if the bot is online",
     "ping",
-    (message) => {
-        message.channel.send("ping");
+    async(message, args) => {
+        const data = user(message, args);
+        console.log(data);
     }
 );
