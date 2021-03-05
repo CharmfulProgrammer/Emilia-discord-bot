@@ -1,6 +1,6 @@
 import {Message, User} from "discord.js";
 
-const fetchUser = (message: Message, args: string[]): User => {
+const fetchUser = async(message: Message, args: string[]) => {
     const fullName = args.join(" ");
     if(!args.length && !message.mentions.users.size){
         return message.author;
@@ -11,7 +11,8 @@ const fetchUser = (message: Message, args: string[]): User => {
             const {user: {username}, displayName} = member;
             const [usrname, nickname] = [username.toLowerCase(), displayName.toLowerCase()];
             return nickname.includes(fullName) || usrname.includes(fullName);
-        })?.user;
+        })?.user ||
+        await message.client.users.fetch(args[0]);
     }
 }
 
