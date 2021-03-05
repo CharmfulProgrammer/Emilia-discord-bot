@@ -1,6 +1,8 @@
-const spellCheck = (word: string, wordArr: string[]) => {
-	const regex = new RegExp(`(${word.split("").join("|")})`, "g");
-	const matchPercent = [...wordArr].map(newWord => newWord.match(regex)?.length / newWord.length * 100 - (word.length - newWord.length) * 10 || 0);
-	return Math.max(...matchPercent) > 60 && wordArr[matchPercent.indexOf(Math.max(...matchPercent))] || "";
+import autocorrect from "autocorrect";
+
+const result = (word: string, wordArr: string[]) => {
+	const resultWord = autocorrect({words: wordArr})(word);
+	return `Did you mean ${resultWord}`;
 }
-export default spellCheck;
+
+export default result;
