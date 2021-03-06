@@ -5,7 +5,7 @@ class Command{
         public name: string,
         public description: string,
         public usage: string,
-        public execute: (message: Message, args?: string[]) => Promise<void>|void|undefined,
+        public execute: (message: Message, args?: string[]) => Promise<(void|Message)>|Message|void|undefined,
         public alias?: string[]
     ){}
 }
