@@ -21,8 +21,10 @@ client.on("message", async(message: Message) => {
     if(!startsWithPrefix || message.author.bot) return;
 
     message.channel.startTyping();   
-    await commands.has(commandName) && commands.get(commandName).execute(message, args) ||
-    message.channel.send(correctCommand);
+    if(commands.has(commandName))
+        await commands.get(commandName).execute(message, args);
+    else 
+        await message.channel.send(correctCommand);
     message.channel.stopTyping();
 
 });
