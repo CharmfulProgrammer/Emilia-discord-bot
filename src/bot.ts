@@ -14,14 +14,16 @@ client.once("ready", () => {
     console.log("Running...");
 });
 
-client.on("message", (message: Message) => {
+client.on("message", async(message: Message) => {
     const {startsWithPrefix, commandName, args} = messageManipulator(message);
     const correctCommand = autocorrect(commandName, commandNameArr);
 
     if(!startsWithPrefix || message.author.bot) return;
 
-    commands.has(commandName) && commands.get(commandName).execute(message, args) ||
+    message.channel.startTyping();   
+    await commands.has(commandName) && commands.get(commandName).execute(message, args) ||
     message.channel.send(correctCommand);
+    message.channel.stopTyping();
 
 });
 
