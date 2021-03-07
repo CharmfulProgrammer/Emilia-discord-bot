@@ -7,15 +7,19 @@ export const command = new Command(
     "Shows a random cat picture",
     "cat",
     async(message) => {
-        const response = await fetch("https://some-random-api.ml/img/cat");
-        const data = await response.json();
-        const embed: Partial<MessageEmbed> = {
-            color: 0x00ff00,
-            title: "Here's a cute cat",
-            image: {
-                url: data.link
-            }
-        };
-        message.channel.send({embed});
+        try {
+            const response = await fetch("https://some-random-api.ml/img/cat");
+            const data = await response.json();
+            const embed: Partial<MessageEmbed> = {
+                color: 0x0ee67a,
+                title: "Here's a cute cat",
+                image: {
+                    url: data.link
+                }
+            };
+            message.channel.send({embed});
+        } catch {
+            message.channel.send("Something went wrong, try again")
+        }
     }
 );

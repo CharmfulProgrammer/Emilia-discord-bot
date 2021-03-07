@@ -6,8 +6,12 @@ export const command = new Command(
     "Shows a random cat fact",
     "catfact",
     async(message) => {
-        const response = await fetch("https://some-random-api.ml/facts/cat");
-        const data = await response.json();
-        message.channel.send(data.fact);
+        try {
+            const response = await fetch("https://some-random-api.ml/facts/cat");
+            const data = await response.json();
+            message.channel.send(data.fact);
+        } catch {
+            message.channel.send("Something went wrong, try again")
+        }
     }
 );

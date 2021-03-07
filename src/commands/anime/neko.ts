@@ -8,13 +8,17 @@ export const command = new Command(
     "Shows random neko girl",
     "neko",
     async(message) => {
-        const data = await sfw.neko();
-        const embed: Partial<MessageEmbed> = {
-            title: "Nya~~~",
-            color: 0x41d18b,
-            image: {
-                url: data.url
-            }
-        } 
-        message.channel.send({embed});
+        try {
+            const data = await sfw.neko();
+            const embed: Partial<MessageEmbed> = {
+                title: "Nya~~~",
+                color: 0x41d18b,
+                image: {
+                    url: data.url
+                }
+            } 
+            message.channel.send({embed});
+        } catch {
+            message.channel.send("Something went wrong, try again");
+        }
     });
