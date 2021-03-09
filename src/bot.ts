@@ -2,9 +2,9 @@ import {Client, Message} from "discord.js";
 import privateConfig from "./privateConfig";
 //import privateConfig from "./_privateConfig";
 const {TOKEN} = privateConfig;
-import commands from "./selfUtils/commandHandler";
+import {commands} from "./selfUtils/commandHandler";
 import messageManipulator from "./selfUtils/messageManipulator";
-import autocorrect from "./selfUtils/spellCheck";
+import autoCorrect from "./selfUtils/spellCheck";
 
 const client = new Client();
 
@@ -16,7 +16,7 @@ client.once("ready", () => {
 
 client.on("message", async(message: Message) => {
     const {startsWithPrefix, commandName, args} = messageManipulator(message);
-    const correctCommand = autocorrect(commandName, commandNameArr);
+    const correctCommand = autoCorrect(commandName, commandNameArr);
 
     if(!startsWithPrefix || message.author.bot) return;
 
