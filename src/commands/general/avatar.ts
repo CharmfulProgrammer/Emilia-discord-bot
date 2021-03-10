@@ -5,7 +5,7 @@ import {MessageEmbed} from "discord.js";
 export const command = new Command(
     "avatar",
     "Shows either yours or the given user's profile picture",
-    "avatar| pfp| a",
+    "user(optional)",
     async(message, args) => {
         try {
             const user = await User(message, args);

@@ -5,7 +5,7 @@ import User from "../../selfUtils/fetchUser";
 export const command = new Command(
     "invert",
     "Invert the color of an image",
-    "invert <id|mention|username|attached image|image link>(optional)",
+    "<user|attached image>(optional)",
     async(message, args) => {
         try {
             let imgURL = !message.attachments.size? (await User(message, args)).avatarURL({size: 2048, format: "png"}) : message.attachments.first().url;

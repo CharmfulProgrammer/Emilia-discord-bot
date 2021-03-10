@@ -6,7 +6,7 @@ const {sfw} = new Neko();
 export const command = new Command(
     "waifu",
     "Shows a random waifu picture",
-    "waifu",
+    "*none*",
     async(message) => {
         try {
             const data = await sfw.waifu();

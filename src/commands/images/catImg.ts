@@ -5,7 +5,7 @@ import fetch from "node-fetch";
 export const command = new Command(
     "cat",
     "Shows a random cat picture",
-    "cat",
+    "*none*",
     async(message) => {
         try {
             const response = await fetch("https://some-random-api.ml/img/cat");
