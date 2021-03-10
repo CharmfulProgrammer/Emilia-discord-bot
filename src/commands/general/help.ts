@@ -1,5 +1,5 @@
 import Command from "../../selfUtils/commandFrame";
-import {commandInfo} from "../../selfUtils/commandHandler";
+import {categories, commandInfo} from "../../selfUtils/commandHandler";
 import {Message, MessageEmbed} from "discord.js"
 
 export const command = new Command(
@@ -20,35 +20,30 @@ export const command = new Command(
 );
 
 const specificHelp = (message: Message, args: string[]) => {
-    let infos;
-    commandInfo.forEach(cmd => {
-        if(cmd.find(name => name.name === args[0])){
-            infos = cmd.find(name => name.name === args[0]);
-        };
-    });
-        const embed: Partial<MessageEmbed> = {
-            color: 0x034efc,
-            title: infos.name,
-            description: infos.description,
-            fields: [
-                {
-                    name: "Category",
-                    value: infos.category,
-                    inline: false
-                },
-                {
-                    name: "Arguments",
-                    value: infos.args,
-                    inline: false
-                },
-            ],
-            footer: {
-                text: "user: user id|mention|name"
-            }
+    const infos = commandInfo.find(cmd => cmd.name === args[0])
+    const embed: Partial<MessageEmbed> = {
+        color: 0x034efc,
+        title: infos.name,
+        description: infos.description,
+        fields: [
+            {
+                name: "Category",
+                value: infos.category,
+                inline: false
+            },
+            {
+                name: "Arguments",
+                value: infos.args,
+                inline: false
+            },
+        ],
+        footer: {
+            text: "user: user id|mention|name"
         }
-        message.channel.send({embed});
+    }
+    message.channel.send({embed});
 }
 
 const allHelp = (message: Message, args: string[]) => {
-    console.log(commandInfo[0]);
+    
 }
