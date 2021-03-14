@@ -1,8 +1,12 @@
-import autocorrect from "autocorrect";
+import autoCorrect from "autocorrect";
+import {commandInfo} from "./commandHandler"
 
-const result = (word: string, wordArr: string[]) => {
-	const resultWord = autocorrect({words: wordArr})(word);
-	return `Did you mean ${resultWord}`;
+const wordArr: string[] = [];
+commandInfo.forEach(command => wordArr.push(command.name))
+
+const result = (word: string) => {
+	const resultWord = autoCorrect({words: wordArr})(word);
+	return resultWord;
 }
 
 export default result;

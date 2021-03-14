@@ -1,6 +1,7 @@
 import Command from "../../selfUtils/commandFrame";
-import {commandInfo, commands} from "../../selfUtils/commandHandler";
-import {Message, MessageEmbed} from "discord.js"
+import {commandInfo} from "../../selfUtils/commandHandler";
+import {Message, MessageEmbed} from "discord.js";
+import autocorrect from "../../selfUtils/spellCheck";
 
 export const command = new Command(
     "help",
@@ -20,7 +21,11 @@ export const command = new Command(
 );
 
 const specificHelp = (message: Message, args: string[]) => {
-    const infos = commandInfo.find(cmd => cmd.name === args[0])
+    const infos = commandInfo.find(cmd => cmd.name === args[0]);
+    if(!infos) {
+        return message.channel.send(`Command not found, did you mean ${autocorrect(args[0])}`);
+    }
+    console.log(infos);
     const embed: Partial<MessageEmbed> = {
         color: 0x034efc,
         title: infos.name,
