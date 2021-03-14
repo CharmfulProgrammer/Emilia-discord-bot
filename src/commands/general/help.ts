@@ -1,5 +1,5 @@
 import Command from "../../selfUtils/commandFrame";
-import {categories, commandInfo} from "../../selfUtils/commandHandler";
+import {commandInfo, commands} from "../../selfUtils/commandHandler";
 import {Message, MessageEmbed} from "discord.js"
 
 export const command = new Command(
@@ -11,10 +11,10 @@ export const command = new Command(
             if(args.length) {
                 specificHelp(message, args);
             }else {
-                allHelp(message, args);
+                allHelp(message);
             }
-        } catch {
-            
+        } catch(err) {
+            console.log(err);
         }
     }
 );
@@ -44,6 +44,33 @@ const specificHelp = (message: Message, args: string[]) => {
     message.channel.send({embed});
 }
 
-const allHelp = (message: Message, args: string[]) => {
-    
+const allHelp = (message: Message) => {
+    type embedField = {
+        name: string,
+        value: string,
+        inline: boolean
+    }
+    const categories: Map<string, string[]> = new Map();
+    const field: embedField[] = [];
+    for(const cmdinfo of commandInfo) {
+        categories.set(cmdinfo.category, []);
+    }
+    commandInfo.forEach(command => {
+        categories.get(command.category).push(command.name);
+    });
+    const catgs = Object.keys(Object.fromEntries(categories)); //pain of lack of variable names
+    categories.forEach(command => {
+        field.push({
+            name: catgs.shift(),
+            value: command.join(", "),
+            inline: false
+        })
+    });
+    const embed: Partial<MessageEmbed> = {
+        color: 0x034efc,
+        title: "All commands",
+        description: "List of all commands sorted by categories",
+        fields: [...field]
+    }
+    message.channel.send({embed});
 }

@@ -13,7 +13,6 @@ interface cmdInfo {
 
 const commands: Collection<string, any> = new Collection();
 const commandInfo: cmdInfo[] = [];
-const categories: string[] = [];
 
 const PATH = process.cwd() + "/build/commands/";
 sync(PATH + "*/*.js").forEach((file: any) => {
@@ -21,9 +20,8 @@ sync(PATH + "*/*.js").forEach((file: any) => {
     const category = path.replace(/\\[^\\]+\.js/i, "").split("\\").pop();
     const command: Command = require(path).command;
     const infos: cmdInfo = {name: command.name, description: command.description, args: command.args, category} //pain when you run out of good variable name
-    categories.indexOf(category) === -1 && categories.push(category);
     commandInfo.push(infos);
     commands.set(command.name, command);
 });
 
-export {commands, commandInfo, categories};
+export {commands, commandInfo};
