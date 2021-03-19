@@ -17,15 +17,16 @@ client.on("message", async(message: Message) => {
     const {startsWithPrefix, commandName, args} = messageManipulator(message);
     const correctCommand = autoCorrect(commandName);
 
-    if(!startsWithPrefix && message.author.bot) return;
+    if(!startsWithPrefix || message.author.bot) return;
 
-    message.channel.startTyping();   
-    if(commands.has(commandName))
-        await commands.get(commandName).execute(message, args);
-    else 
-        await message.channel.send(`Command not found, did you mean ${correctCommand}`);
-    message.channel.stopTyping();
-    console.log(args);
+    try {
+        message.channel.startTyping();   
+        if(commands.has(commandName))
+            await commands.get(commandName).execute(message, args);
+        else 
+            await message.channel.send(`Command not found, did you mean ${correctCommand}`);
+        message.channel.stopTyping();
+    } catch {}
 
 });
 
