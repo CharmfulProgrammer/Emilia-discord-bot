@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "description": "A multi-porpose discord bot ",
   "main": "./dist/bot.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "NajeebFarhan",
   "license": "ISC",
   "dependencies": {
