@@ -1,3 +1,5 @@
+// this is a long shit which i dont know how i code long ago but it works so i dont dare to touch it
+
 import { Message } from "discord.js";
 
 const fetchUser = async (message: Message, args: string[]) => {

@@ -9,7 +9,11 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": false,
     "allowJs": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "paths": {
+      "@libs/*": ["libs/*"]
+    }
   },
   "include": ["src/"]
 }
