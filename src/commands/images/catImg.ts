@@ -6,13 +6,10 @@ export default {
     try {
       const response = await fetch("https://some-random-api.ml/img/cat");
       const data = await response.json();
-      const embed: Partial<MessageEmbed> = {
-        color: 0x0ee67a,
-        title: "Here's a cute cat",
-        image: {
-          url: data.link,
-        },
-      };
+      const embed = new MessageEmbed()
+        .setTitle("Here's a cute cat")
+        .setColor(0x0ee67)
+        .setImage(data.link);
       message.channel.send({ embed });
     } catch {
       message.channel.send("Something went wrong, try again");
