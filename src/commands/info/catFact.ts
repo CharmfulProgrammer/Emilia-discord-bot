@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 
 export default {
+  name: "catfact",
   async execute(message) {
     try {
       const response = await fetch("https://some-random-api.ml/facts/cat");

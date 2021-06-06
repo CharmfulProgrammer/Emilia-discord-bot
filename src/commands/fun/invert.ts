@@ -1,7 +1,8 @@
 import { MessageAttachment } from "discord.js";
-import fetchUser from "@libs/fetchUser";
+import fetchUser from "../../libs/fetchUser";
 
 export default {
+  name: "invert",
   async execute(message, args) {
     try {
       let imgURL = !message.attachments.size

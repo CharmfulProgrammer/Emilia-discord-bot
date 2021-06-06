@@ -1,7 +1,8 @@
-import fetchUser from "@libs/fetchUser";
+import fetchUser from "../../libs/fetchUser";
 import { MessageEmbed } from "discord.js";
 
 export default {
+  name: "avatar",
   async execute(message, args) {
     try {
       const user = await fetchUser(message, args);
