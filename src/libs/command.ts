@@ -10,8 +10,10 @@ const commandFiles = glob
   );
 
 commandFiles.forEach((file) => {
-  const command = require(file).default;
-  commands.set(command.name, command);
+  try {
+    const command = require(file).default;
+    commands.set(command.name, command);
+  } catch {}
 });
 
 export default commands;

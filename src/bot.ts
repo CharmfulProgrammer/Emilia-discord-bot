@@ -1,6 +1,7 @@
 import { Client, Message } from "discord.js";
 import dotenv from "dotenv";
 import commands from "./libs/command";
+import autocorrect from "./libs/autocorrect";
 
 dotenv.config();
 const client = new Client();
@@ -19,10 +20,14 @@ client.on("message", async (message: Message) => {
   if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
   try {
-    message.channel.startTyping()
+    message.channel.startTyping();
     commands.get(command).execute(message, args);
-    message.channel.stopTyping()
-  } catch {}
+    message.channel.stopTyping();
+  } catch {
+    message.channel.send(
+      `${command} is not found, did you mean ${autocorrect(command)}?`
+    );
+  }
 });
 
 client.login();
