@@ -13,7 +13,6 @@ client.on("message", async (message: Message) => {
     const [command, ...args] = message.content.trim().toLowerCase().slice(PREFIX.length).split(" ");
     if(!message.content.startsWith(PREFIX) || message.guild.id !== "775030836868808724") return;
 
-    console.log("hey")
 });
 
 client.login();
