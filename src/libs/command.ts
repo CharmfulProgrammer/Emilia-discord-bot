@@ -1,4 +1,5 @@
 import { Collection } from "discord.js";
+import { resolve} from "path"
 import glob from "glob";
 
 type cmd = { name: string; execute: () => any };
@@ -19,9 +20,3 @@ const filesRelativePath = async () => {
   );
   return edited;
 };
-
-const insertCommands = async () => {
-  const importCommands = findCommandFile();
-  console.log(importCommands)
-};
-insertCommands()
