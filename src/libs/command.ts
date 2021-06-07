@@ -1,5 +1,4 @@
 import { Collection } from "discord.js";
-import { resolve} from "path"
 import glob from "glob";
 
 type cmd = { name: string; execute: () => any };
@@ -7,7 +6,7 @@ const commands: Collection<string, cmd> = new Collection();
 
 const findCommandFile = () =>
   new Promise<string[]>((resolve, reject) => {
-    glob("./dist/commands/**/*.js", async (err, files) => {
+    glob("./@(dist|src)/commands/**/*.*", async (err, files) => {
       if (err) reject(err);
       resolve(files);
     });
@@ -20,3 +19,11 @@ const filesRelativePath = async () => {
   );
   return edited;
 };
+
+const insertCommand = async() => {
+  (await filesRelativePath()).forEach(file => {
+    console.log(file)
+  })
+}
+
+insertCommand()
