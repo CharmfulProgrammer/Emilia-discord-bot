@@ -10,10 +10,7 @@
     "resolveJsonModule": false,
     "allowJs": true,
     "moduleResolution": "node",
-    "baseUrl": "src",
-    "paths": {
-      "@libs/*": ["libs/*"]
-    }
+    "baseUrl": "src"
   },
-  "include": ["src/"]
+  "include": ["src/", "@types/command.d.ts"]
 }

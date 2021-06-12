@@ -1,9 +1,12 @@
+import command from "commandType";
 import { MessageEmbed } from "discord.js";
 import Neko from "nekos.life";
 const { sfw } = new Neko();
 
 export default {
   name: "waifu",
+  description: "See random generated waifus that doesn't exist, well your waifu already doesn't exist",
+  usage: "waifu",
   async execute(message) {
     try {
       const data = await sfw.waifu();
@@ -16,4 +19,4 @@ export default {
       message.channel.send("Something went wrong, try again.");
     }
   },
-};
+} as command;

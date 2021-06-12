@@ -1,3 +1,4 @@
+import command from "commandType";
 import fetch from "node-fetch";
 
 export default {
@@ -11,4 +12,4 @@ export default {
       message.channel.send("Something went wrong, try again");
     }
   },
-};
+} as command;

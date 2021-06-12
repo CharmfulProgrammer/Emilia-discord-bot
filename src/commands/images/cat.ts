@@ -1,8 +1,11 @@
+import command from "commandType";
 import { MessageEmbed } from "discord.js";
 import fetch from "node-fetch";
 
 export default {
   name: "cat",
+  description: "See cute cats",
+  usage: "cat",
   async execute(message) {
     try {
       const response = await fetch("https://some-random-api.ml/img/cat");
@@ -16,4 +19,4 @@ export default {
       message.channel.send("Something went wrong, try again");
     }
   },
-};
+} as command;

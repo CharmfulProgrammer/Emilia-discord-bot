@@ -1,7 +1,8 @@
+import command from "commandType";
 import { Collection } from "discord.js";
 import glob from "glob";
 
-const commands: Collection<string, any> = new Collection();
+const commands: Collection<string, command> = new Collection();
 
 const commandFiles = glob
   .sync("./@(dist|src)/commands/**/*.*")
@@ -11,7 +12,7 @@ const commandFiles = glob
 
 commandFiles.forEach((file) => {
   try {
-    const command = require(file).default;
+    const command: command = require(file).default;
     commands.set(command.name, command);
   } catch {}
 });
