@@ -1,6 +1,6 @@
 import { MessageAttachment } from "discord.js";
 import command from "commandType";
-import fetchUser from "libs/fetchUser";
+import fetchUser from "../../libs/fetchUser";
 
 export default {
   name: "gay",

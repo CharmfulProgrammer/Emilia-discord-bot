@@ -1,6 +1,6 @@
 import command from "commandType";
 import { MessageAttachment } from "discord.js";
-import fetchUser from "libs/fetchUser";
+import fetchUser from "../../libs/fetchUser";
 
 export default {
   name: "waste",

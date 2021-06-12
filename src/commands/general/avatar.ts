@@ -1,4 +1,4 @@
-import fetchUser from "libs/fetchUser";
+import fetchUser from "../../libs/fetchUser";
 import { MessageEmbed } from "discord.js";
 import command from "commandType";
 

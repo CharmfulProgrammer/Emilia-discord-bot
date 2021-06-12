@@ -12,5 +12,5 @@
     "moduleResolution": "node",
     "baseUrl": "src"
   },
-  "include": ["src/", "@types/command.d.ts"]
+  "include": ["src/"]
 }
