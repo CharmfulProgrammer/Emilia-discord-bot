@@ -19,15 +19,9 @@ client.on("message", async (message: Message) => {
     .split(" ");
   if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
-  try {
-    message.channel.startTyping();
-    commands.get(command).execute(message, args);
-    message.channel.stopTyping();
-  } catch {
-    message.channel.send(
-      `${command} is not found, did you mean ${autocorrect(command)}?`
-    );
-  }
+  if(command === autocorrect(command))
+  return  commands.get(command).execute(message, args);
+  message.channel.send(`${command} is not found, did you mean ${autocorrect(command)}`)
 });
 
 client.login();
