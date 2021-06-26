@@ -8,7 +8,7 @@ export default {
   usage: [
     "trigger",
     "trigger charm",
-    "trigger LoystonLive@0001",
+    "trigger LoystonLive#0001",
     "trigger *user-id*",
   ],
   async execute(message, args) {

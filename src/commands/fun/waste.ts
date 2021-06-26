@@ -5,7 +5,7 @@ import fetchUser from "../../libs/fetchUser";
 export default {
   name: "waste",
   description: "Wasted *_*",
-  usage: ["waste", "waste LoystonLive", "waste @ayan@8744", "waste *user-id*"],
+  usage: ["waste", "waste LoystonLive", "waste @ayan#8744", "waste *user-id*"],
   async execute(message, args) {
     try {
       let imgURL = !message.attachments.size

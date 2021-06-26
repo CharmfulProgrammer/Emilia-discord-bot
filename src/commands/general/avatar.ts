@@ -5,7 +5,7 @@ import command from "commandType";
 export default {
   name: "avatar",
   description: "See someone's beautiful profile picture",
-  usage: ["avatar", "avatar YourCrush", "avatar @Charm@0690", "avatar *user-id*"],
+  usage: ["avatar", "avatar YourCrush", "avatar @Charm#0690", "avatar *user-id*"],
   alias: ["av", "pfp"],
   async execute(message, args) {
     try {

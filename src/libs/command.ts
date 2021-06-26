@@ -13,7 +13,8 @@ const commandFiles = glob
 commandFiles.forEach((file) => {
   try {
     const command: command = require(file).default;
-    commands.set(command.name, command);
+    const category = file.split(/[/\\]/g).reverse()[1];
+    commands.set(command.name, { ...command, category });
   } catch {}
 });
 

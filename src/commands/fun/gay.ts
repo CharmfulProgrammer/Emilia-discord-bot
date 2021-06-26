@@ -5,7 +5,7 @@ import fetchUser from "../../libs/fetchUser";
 export default {
   name: "gay",
   description: "Make it rainbow🌈",
-  usage: ["gay", "gay ayan", "gay @Yoda@0660", "gay *user-id*"],
+  usage: ["gay", "gay ayan", "gay @Yoda#0660", "gay *user-id*"],
   async execute(message, args) {
     try {
       let imgURL = !message.attachments.size

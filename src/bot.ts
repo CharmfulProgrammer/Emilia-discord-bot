@@ -9,6 +9,10 @@ const PREFIX = process.env.PREFIX;
 
 client.once("ready", () => {
   console.log("Running...");
+
+  client.user.setActivity("to <3help | under development", {
+    type: "LISTENING",
+  });
 });
 
 client.on("message", async (message: Message) => {
@@ -19,9 +23,11 @@ client.on("message", async (message: Message) => {
     .split(" ");
   if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
-  if(command === autocorrect(command))
-  return  commands.get(command).execute(message, args);
-  message.channel.send(`${command} is not found, did you mean ${autocorrect(command)}`)
+  if (command === autocorrect(command))
+    return commands.get(command).execute(message, args);
+  message.channel.send(
+    `${command} is not found, did you mean ${autocorrect(command)}`
+  );
 });
 
 client.login();
