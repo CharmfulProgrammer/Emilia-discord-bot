@@ -24,11 +24,13 @@ client.on("message", async (message: Message) => {
   if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
   // something's weird with try-catch
-  if (command === autocorrect(command))
-    return commands.get(command).execute(message, args);
-  message.channel.send(
-    `${command} is not found, did you mean ${autocorrect(command)}`
-  );
+  try {
+    commands.get(command).execute(message, args);
+  } catch {
+    const cmd = commands.find((c) => c?.alias?.includes(command));
+    (cmd && commands.get(cmd.name).execute(message, args)) ||
+      message.channel.send(`Did you mean ${autocorrect(command)}?`);
+  }
 });
 
 client.login();
