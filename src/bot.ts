@@ -10,7 +10,7 @@ const PREFIX = process.env.PREFIX;
 client.once("ready", () => {
   console.log("Running...");
 
-  client.user.setActivity("to <3help | under development", {
+  client.user.setActivity("<3help | under development", {
     type: "LISTENING",
   });
 });
@@ -23,6 +23,7 @@ client.on("message", async (message: Message) => {
     .split(" ");
   if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
+  // something's weird with try-catch
   if (command === autocorrect(command))
     return commands.get(command).execute(message, args);
   message.channel.send(

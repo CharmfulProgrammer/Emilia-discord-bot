@@ -16,13 +16,13 @@ const commandGuide = (cmdObj: command) => {
     usage = "→ " + process.env.PREFIX + cmdObj.usage;
   }
   const embed = new MessageEmbed()
-    .setColor(0x524ef1)
+    .setColor(0x4f57f9)
     .setThumbnail(botAvatar)
     .setTitle("Command Info - " + cmdObj.name)
     .addFields([
       { name: "Description", value: cmdObj.description },
       { name: "Usage/Example(s)", value: usage },
-      { name: "Alias(es)", value: cmdObj.alias || "none" },
+      { name: "Alias(es)", value: cmdObj.alias.join(", ") || "none" },
     ]);
   return embed;
 };
@@ -30,23 +30,27 @@ const commandGuide = (cmdObj: command) => {
 const categories = ["general", "image", "info", "fun", "anime"];
 const commandList = () => {
   const embed = new MessageEmbed()
+    .setColor(0x4f57f9)
     .setTitle("Emilia 0.5-dev")
     .setThumbnail(botAvatar)
     .setDescription(
-      `Type \`${process.env.PREFIX} <command>\` to get more info about a particular command`
-    )
-    .addField("hh", "lol")
-    .addField("p", "d");
-    // const list = [];
-    // categories.forEach(category => {
-    //   const cmd = commands.filter(command => command.category === category).map()
-    //   embed.addField(category, cmd)
-    // })
+      `Type \`${process.env.PREFIX}help <command>\` to get more info about a particular command`
+    );
+  categories.forEach((category) => {
+    embed.addField(
+      category,
+      commands
+        .filter((cmd) => cmd.category === category)
+        .map((cmd) => cmd.name)
+        .join(", ")
+    );
+  });
+  return embed;
 };
 
 export default {
   name: "help",
-  description: "Get a lists of all available commands",
+  description: "Get a list of all available commands",
   usage: ["help", "help waifu"],
   execute(message, args) {
     if (args.length)
@@ -57,6 +61,6 @@ export default {
           "Make sure you typed the command name correctly"
         );
       }
-    message.channel.send("hoo");
+    message.channel.send(commandList());
   },
 } as command;
