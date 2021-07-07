@@ -1,4 +1,4 @@
-import command from "commandType";
+import command from "types/commandType";
 import { MessageAttachment } from "discord.js";
 import fetchUser from "../../libs/fetchUser";
 

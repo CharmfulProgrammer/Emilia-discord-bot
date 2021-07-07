@@ -1,4 +1,4 @@
-import command from "commandType";
+import command from "types/commandType";
 import { MessageEmbed } from "discord.js";
 import Neko from "nekos.life";
 const { sfw } = new Neko();

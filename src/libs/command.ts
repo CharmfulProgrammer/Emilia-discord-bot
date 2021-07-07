@@ -1,4 +1,4 @@
-import command from "commandType";
+import command from "types/commandType";
 import { Collection } from "discord.js";
 import glob from "glob";
 

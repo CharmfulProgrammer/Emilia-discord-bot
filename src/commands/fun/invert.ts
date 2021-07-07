@@ -1,5 +1,5 @@
 import { MessageAttachment } from "discord.js";
-import command from "commandType";
+import command from "types/commandType";
 import fetchUser from "../../libs/fetchUser";
 
 export default {

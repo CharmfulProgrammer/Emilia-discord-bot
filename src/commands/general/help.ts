@@ -1,4 +1,4 @@
-import command from "commandType";
+import command from "types/commandType";
 import { MessageEmbed } from "discord.js";
 import commands from "../../libs/command";
 
@@ -27,7 +27,7 @@ const commandGuide = (cmdObj: command) => {
   return embed;
 };
 
-const categories = ["general", "image", "info", "fun", "anime"];
+const categories = ["general", "image", "info", "fun", "anime", "economy"];
 const commandList = () => {
   const embed = new MessageEmbed()
     .setColor(0x4f57f9)

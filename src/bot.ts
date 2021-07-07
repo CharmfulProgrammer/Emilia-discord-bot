@@ -23,7 +23,6 @@ client.on("message", async (message: Message) => {
     .split(" ");
   if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
-  // something's weird with try-catch
   try {
     commands.get(command).execute(message, args);
   } catch {

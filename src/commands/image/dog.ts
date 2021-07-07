@@ -1,4 +1,4 @@
-import command from "commandType";
+import command from "types/commandType";
 import { MessageEmbed } from "discord.js";
 import fetch from "node-fetch";
 

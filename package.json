@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "A multi-porpose discord bot ",
   "main": "./dist/bot.js",
+  "imports": {
+    "@libs": "./**/libs/*",
+    "@types": "./**/types/*",
+    "database": "./**/database/*"
+  },
   "scripts": {
     "start": "node .",
     "build": "tsc -b",
@@ -22,7 +27,10 @@
     "@types/glob": "^7.1.3",
     "@types/node": "^14.14.27",
     "@types/node-fetch": "^2.5.8",
+    "@types/pg": "^8.6.0",
     "nodemon": "^2.0.7",
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.5",
     "ts-node": "^10.0.0",
     "typescript": "^4.1.5"
   }
