@@ -1,22 +1,15 @@
-import { DataTypes, Model, ModelDefined } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../database";
 
-type userAttribute = {
-  user_id: string;
-  coins: number;
-  score: number;
-  coin_collected_at: number;
- }
-
-type userUpdateAttribute = {
- coins?: number;
- score?: number;
- coin_collected_at?: number;
+class User extends Model {
+  public userID: string;
+  public coins: number;
+  public score: number;
+  public coinCollectedAt: number;
 }
-
-const user:ModelDefined<userAttribute, userUpdateAttribute> = sequelize.define("bot_user",
+User.init(
   {
-    user_id: {
+    userID: {
       type: DataTypes.TEXT,
       primaryKey: true,
       allowNull: false,
@@ -24,20 +17,36 @@ const user:ModelDefined<userAttribute, userUpdateAttribute> = sequelize.define("
     coins: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0
+      defaultValue: 0,
     },
     score: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0
+      defaultValue: 0,
     },
-    coin_collected_at: {
-      type: DataTypes.TIME,
+    coinCollectedAt: {
+      type: DataTypes.BIGINT,
+      allowNull: false,
+      defaultValue: 0
     },
   },
   {
-    tableName: "bot_users",
+    modelName: "botUser",
+    tableName: "botUsers",
     freezeTableName: true,
     timestamps: false,
+    sequelize,
   }
 );
+export default User;
+// (async() => {
+//   // await User.sync();
+//   const user = await User.findOne({ where: { userID: "593537214231609357" }});
+//   // console.log(user.coins)
+//   await user.increment({
+//     coins: 200
+//   })
+//   // await user.save();
+//   // await user.save();
+//   console.log("done");
+// })();
