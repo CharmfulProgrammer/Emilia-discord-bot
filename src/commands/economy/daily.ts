@@ -30,7 +30,6 @@ export default {
         user = await User.create({ userID: message.author.id });
       }
       const timePassed = timeNow - Number(user.coinCollectedAt);
-      console.log(timePassed, dayInMili, timeNow, user.coinCollectedAt, user.coins);
       if (timePassed < dayInMili) {
         return message.channel.send(`You can collect your daily after ${miliSecsInHumanReadableFormat(dayInMili - timePassed)}`);
       }
@@ -43,7 +42,6 @@ export default {
       message.channel.send(
         "You have earned 200<a:diamonds:862417192012087343>"
       );
-      console.log(timePassed, dayInMili, timeNow, user.coinCollectedAt);
     } catch {
       message.channel.send("Something went wrong, try again");
     }
